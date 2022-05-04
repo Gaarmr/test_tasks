@@ -13,14 +13,14 @@ class BaseMeta(ormar.ModelMeta):
     database = database
 
 
-class User(ormar.Model):
+class Questions(ormar.Model):
     class Meta(BaseMeta):
-        tablename = "users"
+        tablename = "questions"
 
     id: int = ormar.Integer(primary_key=True)
-    email: str = ormar.String(max_length=128, unique=True, nullable=False)
-    active: bool = ormar.Boolean(default=True, nullable=False)
-
+    question: str = ormar.String(max_length=256, unique=False, nullable=False)
+    answer: str = ormar.String(max_length=256, unique=False, nullable=False)
+    created_at: str = ormar.String(max_length=256, unique=False, nullable=False)
 
 engine = sqlalchemy.create_engine(settings.db_url)
 metadata.create_all(engine)
