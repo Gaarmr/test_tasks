@@ -9,7 +9,7 @@ def make_report_about_top3(students_avg_scores: dict):
     for key, value in students_avg_scores.items():
         stud_list.append((value, key))
 
-    stud_list = sorted(stud_list, reverse=True)
+    stud_list.sort(reverse=True)
 
     with open('stud_list.csv', 'w', newline='') as csvfile:
         filewriter = csv.writer(csvfile, delimiter=';',
@@ -19,8 +19,6 @@ def make_report_about_top3(students_avg_scores: dict):
         
         for value, key in stud_list[:3]:
             filewriter.writerow([key, value])
-
-
 
 
 make_report_about_top3(students_avg_scores)

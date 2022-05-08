@@ -25,30 +25,42 @@ candidates = [
 ]
 
 
-def find_top_20(candidates: list):
+def top20(candidates):
+    def key(c):
+        scores = c['scores']
+        profile_score = scores['math'] + scores['computer_science']
+        total_score = profile_score + scores['russian_language'] + c['extra_scores']
+        return total_score, profile_score
+    candidates.sort(key=key, reverse=True)
+    return candidates[:20]
+
+print(top20(candidates))
+
+
+# def find_top_20(candidates: list):
     
-    score_list = []
-    stud_list = ''
+#     score_list = []
+#     stud_list = ''
 
-    for stud in candidates:
-        stud_name = stud.get('name')
-        stud_score = stud.get('scores')
-        extra_scores = stud.get('extra_scores')
-        total_score = sum(stud_score.values()) + extra_scores
-        total_score_prof = stud_score["math"] + stud_score["computer_science"] + extra_scores
+#     for stud in candidates:
+#         stud_name = stud.get('name')
+#         stud_score = stud.get('scores')
+#         extra_scores = stud.get('extra_scores')
+#         total_score = sum(stud_score.values()) + extra_scores
+#         total_score_prof = stud_score["math"] + stud_score["computer_science"] + extra_scores
 
-        score_list.append((total_score, stud_name, total_score_prof))
+#         score_list.append((total_score, total_score_prof, stud_name))
 
-    top_20_stud = sorted(score_list, reverse=True)
+#     top_20_stud = sorted(score_list, reverse=True)
 
-    if top_20_stud[19][0] == top_20_stud[20][0] and top_20_stud[19][2] < top_20_stud[20][2]:
-        top_20_stud.pop(19)
+#     if top_20_stud[19][0] == top_20_stud[20][0] and top_20_stud[19][2] < top_20_stud[20][2]:
+#         top_20_stud.pop(19)
         
-    i=1
-    for stud in top_20_stud[:25]:
-        stud_list += f'{i} {stud}\n'
-        i+=1
+#     i=1
+#     for stud in top_20_stud[:25]:
+#         stud_list += f'{i} {stud}\n'
+#         i+=1
 
-    return stud_list
+#     return stud_list
 
-print(find_top_20(candidates))
+# print(find_top_20(candidates))
