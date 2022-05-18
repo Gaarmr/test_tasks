@@ -2,9 +2,10 @@ from pydantic import BaseModel
 
 
 class AnagramQuery(BaseModel):
-    anagram1: str
-    anagram2: str
+    str_1: str
+    str_2: str
 
 
-class DeviceQuery(BaseModel):
-    device_count: int
+class AnagramResponse(BaseModel):
+    is_anagram: bool
+    anagrams_count: int
