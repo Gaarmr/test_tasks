@@ -1,3 +1,4 @@
+import aioredis
 from fastapi import FastAPI
 
 
@@ -16,4 +17,14 @@ async def shutdown():
 
 @app.post("/anagrams/")
 async def anagrams():
+    pass
+
+
+@app.post("/devices/")
+async def anagrams(devices_count: int):
+    pass
+
+
+@app.get("/get_devices_list/")
+async def anagrams(devices_count: int):
     pass
