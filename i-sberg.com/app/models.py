@@ -1,6 +1,10 @@
 from pydantic import BaseModel
 
 
-class QuestionQuery(BaseModel):
-    questions_num: int
-    
+class AnagramQuery(BaseModel):
+    anagram1: str
+    anagram2: str
+
+
+class DeviceQuery(BaseModel):
+    device_count: int
