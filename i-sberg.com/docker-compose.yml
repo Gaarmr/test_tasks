@@ -4,7 +4,7 @@ services:
   app:
     build: .
     command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; uvicorn app.main:app --reload --host 0.0.0.0' # reload
-    volumes: # rebild
+    volumes:
       - .:/app
     ports:
       - 8008:8000
