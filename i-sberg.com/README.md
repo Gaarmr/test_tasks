@@ -12,6 +12,5 @@ POSTGRES_DB = i-sberg
 
 3. Выполнить команду 
 ```sh
-docker run -d --name test-redis -p 6379:6379 redis
 docker-compose up -d
 ``
